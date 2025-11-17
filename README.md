@@ -26,3 +26,5 @@ https://nibmehub.com/opac-service/pdf/read/Real-Time%20C++_%20efficient%20Object
 https://oatpp.io/docs/start/
 
 https://online-uuid-generator.com/languages/cpp
+
+https://github.com/oatpp/example-libressl
