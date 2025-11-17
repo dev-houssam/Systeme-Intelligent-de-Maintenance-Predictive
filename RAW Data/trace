@@ -1,0 +1,231 @@
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+include  readme.md  res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ mkdir bin
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls */*
+res/Data.json  src/main.cpp
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls -t
+Makefile  bin  res  src  include  readme.md
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls -la
+total 24
+drwxr-xr-x  6 islam.jenayah master1 4096 17 nov.  17:26 .
+drwxr-xr-x 12 islam.jenayah master1 4096 17 nov.  15:28 ..
+drwxr-xr-x  2 islam.jenayah master1 4096 17 nov.  17:25 bin
+drwxr-xr-x  2 islam.jenayah master1 4096 17 nov.  17:19 include
+-rw-r--r--  1 islam.jenayah master1    0 17 nov.  17:26 Makefile
+-rw-r--r--  1 islam.jenayah master1    0 17 nov.  15:38 readme.md
+drwxr-xr-x  2 islam.jenayah master1 4096 17 nov.  17:24 res
+drwxr-xr-x  2 islam.jenayah master1 4096 17 nov.  17:21 src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls -la */
+bin/:
+total 8
+drwxr-xr-x 2 islam.jenayah master1 4096 17 nov.  17:25 .
+drwxr-xr-x 6 islam.jenayah master1 4096 17 nov.  17:26 ..
+
+include/:
+total 8
+drwxr-xr-x 2 islam.jenayah master1 4096 17 nov.  17:19 .
+drwxr-xr-x 6 islam.jenayah master1 4096 17 nov.  17:26 ..
+
+res/:
+total 12
+drwxr-xr-x 2 islam.jenayah master1 4096 17 nov.  17:24 .
+drwxr-xr-x 6 islam.jenayah master1 4096 17 nov.  17:26 ..
+-rw-r--r-- 1 islam.jenayah master1 2511 17 nov.  17:24 Data.json
+
+src/:
+total 16
+drwxr-xr-x 2 islam.jenayah master1 4096 17 nov.  17:21 .
+drwxr-xr-x 6 islam.jenayah master1 4096 17 nov.  17:26 ..
+-rw-r--r-- 1 islam.jenayah master1 4400 17 nov.  17:23 main.cpp
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	readme.md  res	src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include src/main.cpp -o bin/serveur_capteurs -lSimpleAmqpClient -lboost_system -lpthread
+src/main.cpp:1:10: fatal error: SimpleAmqpClient/SimpleAmqpClient.h: Aucun fichier ou dossier de ce type
+    1 | #include <SimpleAmqpClient/SimpleAmqpClient.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:16 : bin/serveur_capteurs] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	readme.md  res	src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from src/CapteurDataLoader.cpp:1:
+./include/CapteurDataLoader.hpp:8:10: fatal error: nlohmann/json.hpp: Aucun fichier ou dossier de ce type
+    8 | #include <nlohmann/json.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	obj  readme.md	res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from src/CapteurDataLoader.cpp:1:
+./include/CapteurDataLoader.hpp:8:10: fatal error: nlohmann/json.hpp: Aucun fichier ou dossier de ce type
+    8 | #include <nlohmann/json.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	obj  readme.md	res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from src/CapteurDataLoader.cpp:1:
+./include/CapteurDataLoader.hpp:8:10: fatal error: nlohmann/json.hpp: Aucun fichier ou dossier de ce type
+    8 | #include <nlohmann/json.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	obj  readme.md	res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from ./include/CapteurDataLoader.hpp:9,
+                 from src/CapteurDataLoader.cpp:1:
+./include/Capteur.hpp:5:10: fatal error: nlohmann/json.hpp: Aucun fichier ou dossier de ce type
+    5 | #include <nlohmann/json.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	obj  readme.md	res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from ./include/CapteurDataLoader.hpp:9,
+                 from src/CapteurDataLoader.cpp:1:
+./include/Capteur.hpp:1: error: unterminated #ifndef
+    1 | #ifndef CAPTEUR_HPP
+      | 
+In file included from ./include/CapteurDataLoader.hpp:34:
+./include/CapteurDataLoader.hpp:1: error: unterminated #ifndef
+    1 | #ifndef CAPTEURDATALOADER_HPP
+      | 
+./include/CapteurDataLoader.hpp:1: error: unterminated #ifndef
+    1 | #ifndef CAPTEURDATALOADER_HPP
+      | 
+./include/CapteurDataLoader.hpp:36:1: error: ‘CapteurDataLoader’ does not name a type
+   36 | CapteurDataLoader::CapteurDataLoader(const std::string& path) : filepath(path) {}
+      | ^~~~~~~~~~~~~~~~~
+./include/CapteurDataLoader.hpp:38:13: error: ‘Capteur’ was not declared in this scope
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |             ^~~~~~~
+./include/CapteurDataLoader.hpp:38:20: error: template argument 1 is invalid
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                    ^
+./include/CapteurDataLoader.hpp:38:20: error: template argument 2 is invalid
+./include/CapteurDataLoader.hpp:38:22: error: ‘CapteurDataLoader’ has not been declared
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+./include/CapteurDataLoader.hpp: In function ‘int loadData()’:
+./include/CapteurDataLoader.hpp:40:17: error: ‘Capteur’ was not declared in this scope
+   40 |     std::vector<Capteur> capteurs;
+      |                 ^~~~~~~
+./include/CapteurDataLoader.hpp:40:24: error: template argument 1 is invalid
+   40 |     std::vector<Capteur> capteurs;
+      |                        ^
+./include/CapteurDataLoader.hpp:40:24: error: template argument 2 is invalid
+./include/CapteurDataLoader.hpp:41:14: error: request for member ‘push_back’ in ‘capteurs’, which is of non-class type ‘int’
+   41 |     capteurs.push_back({"c1","temperature",25.5,"C",30,40,"normal","2025-11-17T17:00:00","machine_1"});
+      |              ^~~~~~~~~
+./include/CapteurDataLoader.hpp:42:14: error: request for member ‘push_back’ in ‘capteurs’, which is of non-class type ‘int’
+   42 |     capteurs.push_back({"c2","pression",1.2,"bar",2,3,"normal","2025-11-17T17:00:00","machine_2"});
+      |              ^~~~~~~~~
+src/CapteurDataLoader.cpp: At global scope:
+src/CapteurDataLoader.cpp:7:1: error: ‘CapteurDataLoader’ does not name a type
+    7 | CapteurDataLoader::CapteurDataLoader(const std::string& path) : filepath(path) {}
+      | ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp:9:13: error: ‘Capteur’ was not declared in this scope
+    9 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |             ^~~~~~~
+src/CapteurDataLoader.cpp:9:20: error: template argument 1 is invalid
+    9 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                    ^
+src/CapteurDataLoader.cpp:9:20: error: template argument 2 is invalid
+src/CapteurDataLoader.cpp:9:22: error: ‘CapteurDataLoader’ has not been declared
+    9 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp:9:22: error: redefinition of ‘int loadData()’
+./include/CapteurDataLoader.hpp:38:22: note: ‘int loadData()’ previously defined here
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp: In function ‘int loadData()’:
+src/CapteurDataLoader.cpp:10:17: error: ‘Capteur’ was not declared in this scope
+   10 |     std::vector<Capteur> capteurs;
+      |                 ^~~~~~~
+src/CapteurDataLoader.cpp:10:24: error: template argument 1 is invalid
+   10 |     std::vector<Capteur> capteurs;
+      |                        ^
+src/CapteurDataLoader.cpp:10:24: error: template argument 2 is invalid
+src/CapteurDataLoader.cpp:11:24: error: ‘filepath’ was not declared in this scope
+   11 |     std::ifstream file(filepath);
+      |                        ^~~~~~~~
+src/CapteurDataLoader.cpp:18:5: error: ‘json’ was not declared in this scope
+   18 |     json data = json::parse(buffer.str());
+      |     ^~~~
+src/CapteurDataLoader.cpp:19:23: error: ‘data’ was not declared in this scope; did you mean ‘std::data’?
+   19 |     for (auto& item : data["capteurs"]) {
+      |                       ^~~~
+      |                       std::data
+In file included from /usr/include/c++/12/string:52,
+                 from ./include/CapteurDataLoader.hpp:4:
+/usr/include/c++/12/bits/range_access.h:343:5: note: ‘std::data’ declared here
+  343 |     data(initializer_list<_Tp> __il) noexcept
+      |     ^~~~
+src/CapteurDataLoader.cpp:20:16: error: expected ‘;’ before ‘c’
+   20 |         Capteur c;
+      |                ^~
+      |                ;
+src/CapteurDataLoader.cpp:21:9: error: ‘c’ was not declared in this scope
+   21 |         c.id = item["id"];
+      |         ^
+src/CapteurDataLoader.cpp:30:18: error: request for member ‘push_back’ in ‘capteurs’, which is of non-class type ‘int’
+   30 |         capteurs.push_back(c);
+      |                  ^~~~~~~~~
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ ls
+bin  include  Makefile	obj  readme.md	res  src
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ make
+g++ -std=c++17 -O2 -Wall -I./include -c src/CapteurDataLoader.cpp -o obj/CapteurDataLoader.o
+In file included from ./include/CapteurDataLoader.hpp:34,
+                 from src/CapteurDataLoader.cpp:1:
+./include/CapteurDataLoader.hpp:1: error: unterminated #ifndef
+    1 | #ifndef CAPTEURDATALOADER_HPP
+      | 
+./include/CapteurDataLoader.hpp:1: error: unterminated #ifndef
+    1 | #ifndef CAPTEURDATALOADER_HPP
+      | 
+./include/CapteurDataLoader.hpp:36:1: error: ‘CapteurDataLoader’ does not name a type
+   36 | CapteurDataLoader::CapteurDataLoader(const std::string& path) : filepath(path) {}
+      | ^~~~~~~~~~~~~~~~~
+./include/CapteurDataLoader.hpp:38:22: error: ‘CapteurDataLoader’ has not been declared
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp:7:1: error: ‘CapteurDataLoader’ does not name a type
+    7 | CapteurDataLoader::CapteurDataLoader(const std::string& path) : filepath(path) {}
+      | ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp:9:22: error: ‘CapteurDataLoader’ has not been declared
+    9 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp:9:22: error: redefinition of ‘std::vector<Capteur> loadData()’
+./include/CapteurDataLoader.hpp:38:22: note: ‘std::vector<Capteur> loadData()’ previously defined here
+   38 | std::vector<Capteur> CapteurDataLoader::loadData() {
+      |                      ^~~~~~~~~~~~~~~~~
+src/CapteurDataLoader.cpp: In function ‘std::vector<Capteur> loadData()’:
+src/CapteurDataLoader.cpp:11:24: error: ‘filepath’ was not declared in this scope
+   11 |     std::ifstream file(filepath);
+      |                        ^~~~~~~~
+src/CapteurDataLoader.cpp:18:5: error: ‘json’ was not declared in this scope
+   18 |     json data = json::parse(buffer.str());
+      |     ^~~~
+src/CapteurDataLoader.cpp:19:23: error: ‘data’ was not declared in this scope; did you mean ‘std::data’?
+   19 |     for (auto& item : data["capteurs"]) {
+      |                       ^~~~
+      |                       std::data
+In file included from /usr/include/c++/12/string:52,
+                 from ./include/CapteurDataLoader.hpp:4:
+/usr/include/c++/12/bits/range_access.h:343:5: note: ‘std::data’ declared here
+  343 |     data(initializer_list<_Tp> __il) noexcept
+      |     ^~~~
+make: *** [Makefile:28 : obj/CapteurDataLoader.o] Erreur 1
+islam.jenayah@23hp000:~/Documents/le projet le plus important /Systeme-Intelligent-de-Maintenance-Predictive/RAW Data$ 
+
