@@ -1,4 +1,4 @@
-# Syst-me-Intelligent-de-Maintenance-Pr-dictive
+# Système Intelligent de Maintenance Prédictive
 Système Intelligent de Maintenance Prédictive
 
 Ce document présente le plan complet du projet de maintenance prédictive industrielle. L’objectif est 
