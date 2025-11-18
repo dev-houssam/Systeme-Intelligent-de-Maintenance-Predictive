@@ -1,9 +1,7 @@
 # ------------------ Variables ------------------
 CXX = g++
-CXXFLAGS = -std=c++17 -O2 -Wall -I./include
-LDFLAGS = -lpthread
-
-#LDFLAGS = -lSimpleAmqpClient -lboost_system -lpthread
+CXXFLAGS = -std=c++17 -O2 -Wall -I./include -I/usr/local/include
+LDFLAGS = -L/usr/local/lib -lSimpleAmqpClient -lboost_system -lrabbitmq -lpthread
 
 SRC_DIR = src
 BIN_DIR = bin
