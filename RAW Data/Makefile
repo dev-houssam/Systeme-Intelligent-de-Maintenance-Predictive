@@ -13,6 +13,9 @@ SRC = $(wildcard $(SRC_DIR)/*.cpp)
 # Convertit les .cpp en .o
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
+# -----
+#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 # ------------------ Règles ------------------
 all: $(TARGET)
 
@@ -21,6 +24,9 @@ $(TARGET): $(OBJ)
 	@mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 	@echo "Compilation terminée. Exécutable: $@"
+	
+
+
 
 # Compilation des objets
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
