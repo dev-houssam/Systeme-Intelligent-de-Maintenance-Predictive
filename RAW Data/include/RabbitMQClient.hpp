@@ -1,4 +1,4 @@
-/*
+
 
 
 #ifndef RABBITMQCLIENT_HPP
@@ -9,7 +9,7 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
-// #include <SimpleAmqpClient/SimpleAmqpClient.h>
+#include <SimpleAmqpClient/SimpleAmqpClient.h>
 #include "Capteur.hpp"
 
 class RabbitMQClient {
@@ -27,10 +27,10 @@ public:
 #endif // RABBITMQCLIENT_HPP
 
 
-*/
 
 
 
+/*
 #ifndef RABBITMQCLIENT_HPP
 #define RABBITMQCLIENT_HPP
 
@@ -53,3 +53,6 @@ public:
 };
 
 #endif // RABBITMQCLIENT_HPP
+
+
+*/

@@ -1,11 +1,11 @@
-// #include <SimpleAmqpClient/SimpleAmqpClient.h>
+#include <SimpleAmqpClient/SimpleAmqpClient.h>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <vector>
 #include <thread>
 #include <chrono>
-// #include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 #include "Capteur.hpp"
 #include "CapteurDataLoader.hpp"
 #include "RabbitMQClient.hpp"
@@ -14,7 +14,7 @@
 
 
 
-/*
+
 using json = nlohmann::json;
 
 
@@ -26,16 +26,16 @@ int main() {
     int64_t interval_ns = 800;
 
     // Serveur en boucle infinie
-    ServeurCapteurs serveur("Data.json", "localhost", "capteurs_queue", interval_ns);
+    ServeurCapteurs serveur("../res/Data.json", "localhost", "capteurs_queue", interval_ns);
     serveur.run();
 
     return 0;
 }
 
-*/
 
 
 
+/*
 
 // ------------------- Main -------------------
 int main() {
@@ -50,3 +50,6 @@ int main() {
 
     return 0;
 }
+
+
+*/

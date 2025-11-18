@@ -2,9 +2,9 @@
 #define CAPTEUR_HPP
 
 #include <string>
-// #include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 
-/*
+
 
 
 using json = nlohmann::json;
@@ -37,7 +37,6 @@ struct Capteur {
 
 #endif // CAPTEUR_HPP
 
-*/
 
 
 
@@ -45,6 +44,8 @@ struct Capteur {
 
 
 
+
+/*
 #include <sstream>
 
 struct Capteur {
@@ -76,3 +77,4 @@ struct Capteur {
 };
 
 #endif
+*/

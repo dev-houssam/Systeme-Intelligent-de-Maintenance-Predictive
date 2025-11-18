@@ -1,4 +1,4 @@
-/*
+
 
 
 #include "CapteurDataLoader.hpp"
@@ -36,9 +36,9 @@ std::vector<Capteur> CapteurDataLoader::loadData() {
 }
 
 
-*/
 
 
+/*
 
 #include "CapteurDataLoader.hpp"
 #include <vector>
@@ -53,3 +53,4 @@ std::vector<Capteur> CapteurDataLoader::loadData() {
     capteurs.push_back({"c2","pression",1.2,"bar",2,3,"normal","2025-11-17T17:00:00","machine_2"});
     return capteurs;
 }
+*/

@@ -1,5 +1,5 @@
 
-/*
+
 #ifndef CAPTEURDATALOADER_HPP
 #define CAPTEURDATALOADER_HPP
 
@@ -7,7 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-// #include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 #include "Capteur.hpp"
 
 
@@ -28,10 +28,10 @@ public:
 #endif // CAPTEURDATALOADER_HPP
 
 
-*/
 
 
 
+/*
 #ifndef CAPTEURDATALOADER_HPP
 #define CAPTEURDATALOADER_HPP
 
@@ -50,3 +50,6 @@ public:
 };
 
 #endif // CAPTEURDATALOADER_HPP
+
+
+*/
