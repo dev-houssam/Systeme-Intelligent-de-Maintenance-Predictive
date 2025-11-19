@@ -28,3 +28,9 @@ https://oatpp.io/docs/start/
 https://online-uuid-generator.com/languages/cpp
 
 https://github.com/oatpp/example-libressl 
+
+
+http://localhost:15672/#/queues/%2F/anomaly_detection_queue
+
+example user : 
+admin_cycatrice 
