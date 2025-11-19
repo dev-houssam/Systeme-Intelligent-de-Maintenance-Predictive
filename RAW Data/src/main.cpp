@@ -23,10 +23,10 @@ using json = nlohmann::json;
 // ------------------- Main -------------------
 int main() {
     // Intervalle simulé 800 ns
-    int64_t interval_ns = 800;
+    int64_t interval_ns = 80000;
 
     // Serveur en boucle infinie
-    ServeurCapteurs serveur("../res/Data.json", "localhost", "capteurs_queue", interval_ns);
+    ServeurCapteurs serveur("../res/Data.json", "localhost", "capteurs_data", interval_ns);
     serveur.run();
 
     return 0;

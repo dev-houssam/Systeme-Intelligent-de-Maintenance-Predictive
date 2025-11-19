@@ -13,16 +13,23 @@
 #include "Capteur.hpp"
 
 class RabbitMQClient {
-private:
-    AmqpClient::Channel::ptr_t channel;
-    std::string queueName;
 public:
-    RabbitMQClient(const std::string& host, const std::string& queue);
+    RabbitMQClient(const std::string& host,
+                   const std::string& queue,
+                   const std::string& exchange = "raw_data_exchange",
+                   const std::string& routingKey = "capteurs_data");
 
     void sendMessage(const std::string& message);
-
     void sendCapteursRealtime(const std::vector<Capteur>& capteurs, int64_t interval_ns);
+
+private:
+    std::string queueName;
+    std::string exchangeName;
+    std::string routingKey;
+
+    AmqpClient::Channel::ptr_t channel;
 };
+
 
 #endif // RABBITMQCLIENT_HPP
 
