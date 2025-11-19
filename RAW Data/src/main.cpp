@@ -22,7 +22,7 @@ using json = nlohmann::json;
 
 // ------------------- Main -------------------
 int main() {
-    // Intervalle simulé 800 ns
+    // Intervalle simulé 80000 ns
     int64_t interval_ns = 80000;
 
     // Serveur en boucle infinie

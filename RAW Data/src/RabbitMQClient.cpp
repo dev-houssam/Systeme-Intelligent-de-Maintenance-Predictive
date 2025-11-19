@@ -17,10 +17,12 @@ RabbitMQClient::RabbitMQClient(
         // 1 Déclaration de l'exchange (durable, direct)
         channel->DeclareExchange(
             exchangeName,
-            AmqpClient::Channel::EXCHANGE_TYPE_DIRECT,
+            AmqpClient::Channel::EXCHANGE_TYPE_TOPIC,
             true,   // durable
             false   // autoDelete
         );
+        //AmqpClient::Channel::EXCHANGE_TYPE_DIRECT,
+
 
         // 2 Déclaration de la queue
         channel->DeclareQueue(queueName, false, true, false, false);
