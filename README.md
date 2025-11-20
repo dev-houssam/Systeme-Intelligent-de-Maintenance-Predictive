@@ -29,6 +29,9 @@ https://online-uuid-generator.com/languages/cpp
 
 https://github.com/oatpp/example-libressl 
 
+https://deepwiki.com/portaloffreedom/celery-cpp/6.1-simpleamqpclient-library
+
+https://cppcooking.blogspot.com/2022/12/rabbitmq-c-client-1.html
 
 http://localhost:15672/#/queues/%2F/anomaly_detection_queue
 
