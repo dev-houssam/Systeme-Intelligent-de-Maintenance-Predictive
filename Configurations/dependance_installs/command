@@ -69,4 +69,9 @@ sudo rabbitmq-server start -detached
 
 
 
+sudo rabbitmq-plugins enable rabbitmq_management
+
+
+
+
 

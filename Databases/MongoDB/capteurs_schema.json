@@ -1,7 +1,7 @@
 {
   "$jsonSchema": {
     "bsonType": "object",
-    "required": ["id","typeCapteur","valeurActuelle","unite","SeuilAlerte","SeuilCritique","Etat","timestampDernierMesure","Localisation"],
+    "required": ["id","typeCapteur","valeurActuelle","unite","seuilAlerte","seuilCritique","etat","timestampDerniereMesure","localisation"],
     "additionalProperties": false,
     "properties": {
       "id": {
@@ -21,24 +21,24 @@
         "bsonType": "string",
         "description": "Unité (ex: °C, kPa, m/s²...)"
       },
-      "SeuilAlerte": {
+      "seuilAlerte": {
         "bsonType": ["double","int","decimal"],
         "description": "Seuil d'alerte (nombre)"
       },
-      "SeuilCritique": {
+      "seuilCritique": {
         "bsonType": ["double","int","decimal"],
         "description": "Seuil critique (nombre)"
       },
-      "Etat": {
+      "etat": {
         "bsonType": "string",
         "description": "État du capteur",
         "enum": ["Normal","Alerte","Critique","Inconnu"]
       },
-      "timestampDernierMesure": {
+      "timestampDerniereMesure": {
         "bsonType": "date",
         "description": "Horodatage de la dernière mesure"
       },
-      "Localisation": {
+      "localisation": {
         "bsonType": "string",
         "description": "Localisation textuelle du capteur"
       }

@@ -16,8 +16,9 @@ class ClientMongoDataBase:
         """
         try:
             # Convertir timestampDernierMesure en datetime si c'est une string ISO
-            if "timestampDernierMesure" in data and isinstance(data["timestampDernierMesure"], str):
-                data["timestampDernierMesure"] = datetime.fromisoformat(data["timestampDernierMesure"])
+            if "timestampDerniereMesure" in data and isinstance(data["timestampDerniereMesure"], str):
+                #data["timestampDerniereMesure"] = datetime.fromisoformat(data["timestampDerniereMesure"].replace("T", " ").replace("Z", ""))
+                data["timestampDerniereMesure"] = data["timestampDerniereMesure"]
 
             # Insérer dans MongoDB
             result = self.capteurs_collection.insert_one(data)

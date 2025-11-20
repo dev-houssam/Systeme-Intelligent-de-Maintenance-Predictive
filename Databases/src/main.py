@@ -1,9 +1,14 @@
+import sys
+
 from ClientMongoDataBase import ClientMongoDataBase
 from ClientRabbitMQ import ClientRabbitMQ
 
+#Recuperation du port depuis la ligne de commande
+PORT = sys.argv[1] if sys.argv[1] == "30017" else "27017"
+print("port="+PORT)
 # Création du client MongoDB
 mongo_client = ClientMongoDataBase(
-    uri="mongodb://umg_cycatrice:P_at_cyc4AuDB@127.0.0.1:27017/maintenance_predictive",
+    uri="mongodb://umg_cycatrice:P_at_cyc4AuDB@127.0.0.1:"+ PORT +"/maintenance_predictive",
     db_name="maintenance_predictive"
 )
 

@@ -21,15 +21,15 @@ std::vector<Capteur> CapteurDataLoader::loadData() {
     json data = json::parse(buffer.str());
     for (auto& item : data["capteurs"]) {
         Capteur c;
-        c.id = item["id"];
-        c.typeCapteur = item["typeCapteur"];
-        c.valeurActuelle = item["valeurActuelle"];
-        c.unite = item["unite"];
-        c.seuilAlerte = item["seuilAlerte"];
-        c.seuilCritique = item["seuilCritique"];
-        c.etat = item["etat"];
+        c.id                      = item["id"];
+        c.typeCapteur             = item["typeCapteur"];
+        c.valeurActuelle          = item["valeurActuelle"];
+        c.unite                   = item["unite"];
+        c.seuilAlerte             = item["seuilAlerte"];
+        c.seuilCritique           = item["seuilCritique"];
+        c.etat                    = item["etat"];
         c.timestampDerniereMesure = item["timestampDerniereMesure"];
-        c.localisation = item["localisation"];
+        c.localisation            = item["localisation"];
         capteurs.push_back(c);
     }
     return capteurs;
