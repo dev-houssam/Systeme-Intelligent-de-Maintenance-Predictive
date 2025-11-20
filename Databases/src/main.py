@@ -15,7 +15,7 @@ mongo_client = ClientMongoDataBase(
 # Création du client RabbitMQ
 rabbit_client = ClientRabbitMQ(
     host="localhost",
-    exchange="RAW_data_exchange",
+    exchange="raw_data_exchange",
     queue="capteurs_data",
     mongo_client=mongo_client
 )

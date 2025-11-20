@@ -1,0 +1,82 @@
+{
+    "capteurs": [
+      {
+        "id": "018f3e52-aa9c-7f69-b524-f1c05ad889c4",
+        "typeCapteur": "temperature",
+        "valeurActuelle": 68.5,
+        "unite": "°C",
+        "seuilAlerte": 70.0,
+        "seuilCritique": 85.0,
+        "etat": "Alerte",
+        "timestampDerniereMesure": "2025-11-14T15:22:10Z",
+        "localisation": "Machine #12 - Zone A"
+      },
+      {
+        "id": "018f3e52-e19b-7f2e-bf13-5d7f3ac88af1",
+        "typeCapteur": "vibration",
+        "valeurActuelle": 3.2,
+        "unite": "mm/s",
+        "seuilAlerte": 4.0,
+        "seuilCritique": 6.0,
+        "etat": "Normal",
+        "timestampDerniereMesure": "2025-11-14T15:22:14Z",
+        "localisation": "Machine #7 - Zone B"
+      },
+      {
+        "id": "018f3e53-1b5d-7ea5-9cf0-e8a39c24f3a7",
+        "typeCapteur": "pression",
+        "valeurActuelle": 120.0,
+        "unite": "bar",
+        "seuilAlerte": 150.0,
+        "seuilCritique": 180.0,
+        "etat": "Normal",
+        "timestampDerniereMesure": "2025-11-14T15:22:18Z",
+        "localisation": "Compresseur central"
+      },
+      {
+        "id": "018f3e53-543a-7c89-8e82-3ba0df11e676",
+        "typeCapteur": "courant",
+        "valeurActuelle": 38.1,
+        "unite": "A",
+        "seuilAlerte": 40.0,
+        "seuilCritique": 50.0,
+        "etat": "Alerte",
+        "timestampDerniereMesure": "2025-11-14T15:22:05Z",
+        "localisation": "Machine d’injection #3"
+      },
+      {
+        "id": "018f3e53-a86c-7f4c-bd30-c8c4f1e33512",
+        "typeCapteur": "humidite",
+        "valeurActuelle": 92.0,
+        "unite": "%",
+        "seuilAlerte": 80.0,
+        "seuilCritique": 95.0,
+        "etat": "Critique",
+        "timestampDerniereMesure": "2025-11-14T15:21:55Z",
+        "localisation": "Salle de stockage"
+      },
+      {
+        "id": "018f3e54-2f3d-7f6a-bf10-9d2c1e234f81",
+        "typeCapteur": "temperature",
+        "valeurActuelle": 55.0,
+        "unite": "°C",
+        "seuilAlerte": 65.0,
+        "seuilCritique": 80.0,
+        "etat": "Normal",
+        "timestampDerniereMesure": "2025-11-14T15:23:00Z",
+        "localisation": "Machine #4 - Zone C"
+      },
+      {
+        "id": "018f3e54-9b2c-7f8d-af11-3a2c4e56b981",
+        "typeCapteur": "vibration",
+        "valeurActuelle": 4.5,
+        "unite": "mm/s",
+        "seuilAlerte": 4.0,
+        "seuilCritique": 6.0,
+        "etat": "Alerte",
+        "timestampDerniereMesure": "2025-11-14T15:23:05Z",
+        "localisation": "Machine #10 - Zone D"
+      }
+    ]
+  }
+  

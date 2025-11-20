@@ -26,7 +26,7 @@ int main() {
     int64_t interval_ns = 80000;
 
     // Serveur en boucle infinie
-    ServeurCapteurs serveur("../res/Data.json", "localhost", "capteurs_data", interval_ns);
+    ServeurCapteurs serveur("../res/DataTest.json", "localhost", "capteurs_data", interval_ns);
     serveur.run();
 
     return 0;

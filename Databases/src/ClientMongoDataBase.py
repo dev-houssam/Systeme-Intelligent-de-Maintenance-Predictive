@@ -8,7 +8,7 @@ class ClientMongoDataBase:
         """
         self.client = MongoClient(uri)
         self.db = self.client[db_name]
-        self.capteurs_collection = self.db["capteurs"]
+        self.capteurs_collection = self.db["capteursTest"]
 
     def insert_capteur(self, data: dict):
         """
@@ -16,12 +16,13 @@ class ClientMongoDataBase:
         """
         try:
             # Convertir timestampDernierMesure en datetime si c'est une string ISO
-            if "timestampDerniereMesure" in data and isinstance(data["timestampDerniereMesure"], str):
-                #data["timestampDerniereMesure"] = datetime.fromisoformat(data["timestampDerniereMesure"].replace("T", " ").replace("Z", ""))
-                data["timestampDerniereMesure"] = data["timestampDerniereMesure"]
+            #if "timestampDerniereMesure" in data and isinstance(data["timestampDerniereMesure"], str):
+            #    #data["timestampDerniereMesure"] = datetime.fromisoformat(data["timestampDerniereMesure"].replace("T", " ").replace("Z", ""))
+            #    data["timestampDerniereMesure"] = data["timestampDerniereMesure"]
 
             # Insérer dans MongoDB
-            result = self.capteurs_collection.insert_one(data)
-            print(f"Document inséré avec _id={result.inserted_id}")
+            #result = self.capteurs_collection.insert_one(data)
+            #print(f"Document inséré avec _id={result.inserted_id}")
+            print(f"Document inséré avec _id=")
         except Exception as e:
             print("Erreur lors de l'insertion:", e)

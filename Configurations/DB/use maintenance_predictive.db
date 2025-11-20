@@ -1,9 +1,0 @@
-use maintenance_predictive
-
-db.createUser({
-  user: "umg_cycatrice",
-  pwd: "P_at_cyc4AuDB",
-  roles: [
-    { role: "readWrite", db: "maintenance_predictive" }
-  ]
-})

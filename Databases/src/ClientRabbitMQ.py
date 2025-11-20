@@ -14,7 +14,7 @@ class ClientRabbitMQ:
         self.channel = self.connection.channel()
 
         # Déclarer l'exchange et la queue
-        self.channel.exchange_declare(exchange=self.exchange, exchange_type='fanout', durable=True)
+        self.channel.exchange_declare(exchange=self.exchange, exchange_type='topic', durable=True)
         self.channel.queue_declare(queue=self.queue, durable=True)
         self.channel.queue_bind(exchange=self.exchange, queue=self.queue)
 
