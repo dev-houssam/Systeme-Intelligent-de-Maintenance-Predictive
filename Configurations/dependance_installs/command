@@ -1,0 +1,72 @@
+sudo apt-get update
+
+
+sudo apt-get -y install nlohmann-json3-dev
+
+https://installati.one/install-nlohmann-json3-dev-ubuntu-20-04/
+
+
+apt-get install libboost-all-dev
+
+
+https://cppcooking.blogspot.com/2022/12/rabbitmq-c-client-1.html
+
+sudo apt install cmake g++ libboost-all-dev librabbitmq-dev git
+
+git clone https://github.com/alanxz/SimpleAmqpClient.git
+cd SimpleAmqpClient
+mkdir build
+cd build
+cmake ..
+make 
+sudo make install
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+sudo apt-get install cmake
+
+
+
+## Install Erlang packages
+sudo apt-get install -y erlang-base \
+                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
+                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
+                        erlang-runtime-tools erlang-snmp erlang-ssl \
+                        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
+
+## Install rabbitmq-server and its dependencies
+sudo apt-get install rabbitmq-server -y --fix-missing
+
+
+https://www.rabbitmq.com/docs/install-debian
+
+
+sudo apt-get install python3-pip
+
+
+pip3 install pika
+
+
+sudo apt install build-essential
+
+
+sudo apt install libboost-all-dev
+
+
+sudo apt install cmake
+
+
+sudo apt install build-essential zlib1g-dev libssl-dev -y
+
+
+sudo apt install libssl-dev libcurl4-openssl-dev
+
+
+sudo apt install cmake g++ libboost-all-dev librabbitmq-dev git
+
+
+sudo rabbitmq-server start -detached
+
+
+
+
