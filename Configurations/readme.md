@@ -109,7 +109,11 @@
 	Commandes : [
 		echo  "import json and use it directly on python"
 		sudo apt-get update
+		# Ne pas utiliser cette commande
 		sudo apt install libjson-c-dev
+		# Commande à utiliser
+		sudo apt-get -y install nlohmann-json3-dev
+
 
 	]
 
@@ -127,6 +131,11 @@
 		mkdir simpleamqpclient-build
 		cd simpleamqpclient-build
 		cmake ..
+		make
+		sudo make install
+		# Don't forget to run that
+		export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 	]
 
 
