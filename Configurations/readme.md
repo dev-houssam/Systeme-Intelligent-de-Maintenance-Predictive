@@ -115,9 +115,9 @@
 		sudo apt install libjson-c-dev
 		# Commande à utiliser
 		sudo apt-get -y install nlohmann-json3-dev
-
-
 	]
+	Configuration système : Debian Bookworm | PopOS | Systemd (systemctl)
+
 
 
 
@@ -137,8 +137,11 @@
 		sudo make install
 		# Don't forget to run that
 		export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
+		systemctl status rabbitmq-server
 	]
+	Configuration système : Debian Bookworm | PopOS | Systemd (systemctl)
+
+
 
 
 - Pymongo
@@ -146,9 +149,22 @@
 	Commandes : [
 		pip3 install pymongo
 	]
+	Configuration système : Debian Bookworm | PopOS | Systemd (systemctl)
+	Configuration Incompatible : Mongo30
+
 
 - Pyka
 	Lien d'installation : 
 	Commandes : pip3 install pyka
+	Configuration système : Debian Bookworm | PopOS | Systemd (systemctl)
+	Instabilité : [
+		Gestion de Cadence en temps réel : 
+			(solution) => [ 
+					Gestionnaire de Cadence de Tache ([Sporadique ?, Evenementielle ?, Periodique ?] channel.basic_consume)
+					Gestion synchrone du temps logique (Communication à synchroniser sur le système global)
+					Gestion du support temps réel pour les bases de données (Occurence : MongoDB, et Pymongo)
+				]
+	]
+
 
 ```
