@@ -1,5 +1,7 @@
 # Configuration
 
+
+```md
 ## Nous avons besoin de :
 - RabbitMQ
 	Lien d'installation : https://www.rabbitmq.com/docs/install-debian
@@ -149,3 +151,4 @@
 	Lien d'installation : 
 	Commandes : pip3 install pyka
 
+```
