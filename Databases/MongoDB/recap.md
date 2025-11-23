@@ -106,7 +106,7 @@ db.createCollection("capteurs", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["id","typeCapteur","valeurActuelle","unite","SeuilAlerte","SeuilCritique","Etat","timestampDernierMesure","Localisation"],
+      required: ["id","typeCapteur","valeurActuelle","unite","seuilAlerte","seuilCritique","etat","timestampDernierMesure","localisation"],
       additionalProperties: false,
       properties: {
         id: {
@@ -117,11 +117,11 @@ db.createCollection("capteurs", {
         typeCapteur: { bsonType: "string" },
         valeurActuelle: { bsonType: ["double","int","decimal"] },
         unite: { bsonType: "string" },
-        SeuilAlerte: { bsonType: ["double","int","decimal"] },
-        SeuilCritique: { bsonType: ["double","int","decimal"] },
-        Etat: { bsonType: "string", enum: ["Normal","Alerte","Critique","Inconnu"] },
-        timestampDernierMesure: { bsonType: "date" },
-        Localisation: { bsonType: "string" }
+        seuilAlerte: { bsonType: ["double","int","decimal"] },
+        seuilCritique: { bsonType: ["double","int","decimal"] },
+        etat: { bsonType: "string", enum: ["Normal","Alerte","Critique","Inconnu"] },
+        timestampDernierMesure: { bsonType: "string" },
+        localisation: { bsonType: "string" }
       }
     }
   },

@@ -148,6 +148,13 @@
 	Lien d'installation : 
 	Commandes : [
 		pip3 install pymongo
+		sudo apt install python3-pip
+		pip install virtualenv
+		sudo apt install python3.12-venv
+		python3 -m venv venvCyc
+		source venvCyc/bin/activate
+		pip3 install pymongo
+
 	]
 	Configuration système : Debian Bookworm | PopOS | Systemd (systemctl)
 	Configuration Incompatible : Mongo30
@@ -168,3 +175,79 @@
 
 
 ```
+
+# Accés aux données
+
+## Nous utilisons un environnement python virtuel
+
+```md
+$ mongosh -u umg_cycatrice -p P4ssiwordKessa --authenticationDatabase maintenance_predictive
+$> use maintenance_predictive
+$db> show collections
+$db> db.customers.find()
+$db> db.customersTest.drop()
+
+```
+
+# Environnements virtuels sur Python
+
+```
+- venvCyc : Consacré au stockage dans la base de données MongoDB
+	- lib : pika, pymongo
+- venvCycADT : : Consacré au dévelopmment des outils de detections des anomalies basiques
+	- lib : pika, (moteurs d'inference de règles....)
+```
+
+# Configuration des Bindings
+
+Configurations de l'exchange  : 
+
+Nom de l' Exchange :  raw_data_exchange
+
+```
+To 						| Routing_key 	| Arguments
+---------------------------------------------------
+anomaly_detection_queue | capteurs_data | empty
+---------------------------------------------------
+capteurs_data			| capteurs_data | empty
+---------------------------------------------------
+```
+
+Configurations des Queues : 
+
+- 1 :
+```
+Queue : capteurs_data
+From 			  | Routing Key   | Argument
+--------------------------------------------
+raw_data_exchange | capteurs_data | empty
+```
+
+- 2 :
+```
+Queue : anomaly_detection_queue
+From 			  | Routing Key   | Argument
+--------------------------------------------
+raw_data_exchange | capteurs_data | empty
+```
+
+- 3 :
+```
+Queue : deeplearning_queue
+From 			  | Routing Key   | Argument
+--------------------------------------------
+raw_data_exchange | capteurs_data | empty
+
+```
+
+- 4 :
+```
+Queue : system_manager_queue
+From 			  | Routing Key   | Argument
+--------------------------------------------
+raw_data_exchange | capteurs_data | empty
+
+```
+
+
+Important : Il faut faire attention à bien gérer les keys sinon il y a risque de confusion, occurence "capteurs_data".

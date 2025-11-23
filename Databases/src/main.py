@@ -4,7 +4,11 @@ from ClientMongoDataBase import ClientMongoDataBase
 from ClientRabbitMQ import ClientRabbitMQ
 
 #Recuperation du port depuis la ligne de commande
-PORT = sys.argv[1] if sys.argv[1] == "30017" else "27017"
+try:
+    PORT = sys.argv[1] if sys.argv[1] == "30017" else "27017"
+except Exception as e:
+    PORT = "27017"
+
 print("port="+PORT)
 # Création du client MongoDB
 mongo_client = ClientMongoDataBase(

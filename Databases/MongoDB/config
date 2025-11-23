@@ -1,5 +1,5 @@
-sudo snap install mongo30
 
+sudo snap install mongo30
 
 mongo30                      3.0.12         niemeyer            -        MongoDB document-oriented database
 
@@ -7,13 +7,7 @@ mongo30                      3.0.12         niemeyer            -        MongoDB
 sudo apt update
 sudo apt install snapd
 
-
-
-
-
 sudo systemctl status snap.mongo30.mongod.service
-
-
 
 
 wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
@@ -21,13 +15,9 @@ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add 
 
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 
-
-
 sudo apt-get update
 
-
 sudo apt-get install -y mongodb-mongosh
-
 
 mongosh --version
 

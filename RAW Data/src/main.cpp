@@ -12,9 +12,6 @@
 #include "ServeurCapteurs.hpp"
 
 
-
-
-
 using json = nlohmann::json;
 
 

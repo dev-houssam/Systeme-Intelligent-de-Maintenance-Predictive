@@ -33,5 +33,5 @@ class ClientRabbitMQ:
                 ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
 
         self.channel.basic_consume(queue=self.queue, on_message_callback=callback)
-        print("En attente des messages...")
+        print("En attente des messages... Mongo Database opened to receive capteurs data [...]")
         self.channel.start_consuming()

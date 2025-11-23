@@ -8,7 +8,7 @@ class ClientMongoDataBase:
         """
         self.client = MongoClient(uri)
         self.db = self.client[db_name]
-        self.capteurs_collection = self.db["capteursTest"]
+        self.capteurs_collection = self.db["capteurs"]
 
     def insert_capteur(self, data: dict):
         """
@@ -21,8 +21,7 @@ class ClientMongoDataBase:
             #    data["timestampDerniereMesure"] = data["timestampDerniereMesure"]
 
             # Insérer dans MongoDB
-            #result = self.capteurs_collection.insert_one(data)
-            #print(f"Document inséré avec _id={result.inserted_id}")
-            print(f"Document inséré avec _id=")
+            result = self.capteurs_collection.insert_one(data)
+            print(f"Document inséré avec _id={result.inserted_id}")
         except Exception as e:
             print("Erreur lors de l'insertion:", e)
