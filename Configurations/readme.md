@@ -263,6 +263,8 @@ Important : Il faut faire attention à bien gérer les keys sinon il y a risque 
 - IA : instable/stable selon les priorités, même cadence que ADT
 
 Objectif : Adapter la cadence de Database à la cadence générale.
+Pour cela, voir ce que fait "RAW Data" : 800000ns périodiques
+
 
 
 # Système de nommage d'exchange
