@@ -196,6 +196,9 @@ $db> db.customersTest.drop()
 	- lib : pika, pymongo
 - venvCycADT : : Consacré au dévelopmment des outils de detections des anomalies basiques
 	- lib : pika, (moteurs d'inference de règles....)
+- venvCycAI : Consacré au développement d'outils utilisant le deep learning
+    - lib : pika, (réseau de neuronnes pour apprentissage)
+
 ```
 
 # Configuration des Bindings
