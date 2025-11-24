@@ -254,3 +254,16 @@ raw_data_exchange | capteurs_data | empty
 
 
 Important : Il faut faire attention à bien gérer les keys sinon il y a risque de confusion, occurence "capteurs_data".
+
+
+
+# Respect de la cadence générale 
+- ADT : instable/stable selon les priorités
+- Database : Trop lent, peut ralentir le système générale
+- IA : instable/stable selon les priorités, même cadence que ADT
+
+Objectif : Adapter la cadence de Database à la cadence générale.
+
+
+
+
