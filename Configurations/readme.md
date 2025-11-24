@@ -265,5 +265,8 @@ Important : Il faut faire attention à bien gérer les keys sinon il y a risque 
 Objectif : Adapter la cadence de Database à la cadence générale.
 
 
+# Système de nommage d'exchange
+- just classical
+
 
 

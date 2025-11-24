@@ -5,7 +5,7 @@ import json
 RABBIT_HOST = "localhost"
 EXCHANGE_NAME = "raw_data_exchange"
 QUEUE_NAME = "deeplearning_queue"
-ROUTING_KEY = "capteurs.*"       # topic filter
+ROUTING_KEY = "capteurs_data"       # topic filter
 
 #ROUTING_KEY = "capteurs_data"       # topic filter
 
