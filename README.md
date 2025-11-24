@@ -35,5 +35,10 @@ https://cppcooking.blogspot.com/2022/12/rabbitmq-c-client-1.html
 
 http://localhost:15672/#/queues/%2F/anomaly_detection_queue
 
+# RabbitMQ
+
 example user : 
 admin_cycatrice 
+
+
+
