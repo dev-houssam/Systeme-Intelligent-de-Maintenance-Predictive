@@ -186,6 +186,7 @@ $> use maintenance_predictive
 $db> show collections
 $db> db.customers.find()
 $db> db.customersTest.drop()
+$db> db.customers.count()
 
 ```
 
