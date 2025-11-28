@@ -1,0 +1,29 @@
+{
+  "name": "system-manager",
+  "version": "1.0.0",
+  "description": "gestion de l'ensemble du systeme.",
+  "main": "system_manager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-houssam/Systeme-Intelligent-de-Maintenance-Predictive.git"
+  },
+  "keywords": [
+    "System",
+    "manager;",
+    "Alerte;",
+    "notification;",
+    "prediction"
+  ],
+  "author": "Houssam BACAR; Islam JENAYAH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-houssam/Systeme-Intelligent-de-Maintenance-Predictive/issues"
+  },
+  "homepage": "https://github.com/dev-houssam/Systeme-Intelligent-de-Maintenance-Predictive#readme",
+  "dependencies": {
+    "amqplib": "^0.10.9"
+  }
+}

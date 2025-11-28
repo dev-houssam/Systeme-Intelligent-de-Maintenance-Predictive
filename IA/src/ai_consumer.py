@@ -3,12 +3,16 @@ import json
 
 # ---------- CONFIG ----------
 RABBIT_HOST = "localhost"
+
+# Exchange/Queue d'entrée
 EXCHANGE_NAME = "raw_data_exchange"
 QUEUE_NAME = "deeplearning_queue"
-ROUTING_KEY = "capteurs_data"       # topic filter
+ROUTING_KEY = "capteurs_data"
 
-#ROUTING_KEY = "capteurs_data"       # topic filter
-
+# Nouveau Exchange/Queue de sortie (vers System Manager)
+IA_EXCHANGE = "ia_exchange"
+IA_QUEUE = "result_ia_queue"
+IA_ROUTING_KEY = "ia.result"
 
 # ---------- CONNEXION ----------
 connection = pika.BlockingConnection(
@@ -16,43 +20,43 @@ connection = pika.BlockingConnection(
 )
 channel = connection.channel()
 
-# ---------- EXCHANGE (topic) ----------
+# ---------- EXCHANGE d'entrée ----------
 channel.exchange_declare(
     exchange=EXCHANGE_NAME,
     exchange_type='topic',
     durable=True
 )
 
-# ---------- QUEUE ----------
-channel.queue_declare(
-    queue=QUEUE_NAME,
-    durable=True
-)
-
-# ---------- BINDING ----------
+# ---------- QUEUE d'entrée ----------
+channel.queue_declare(queue=QUEUE_NAME, durable=True)
 channel.queue_bind(
     exchange=EXCHANGE_NAME,
     queue=QUEUE_NAME,
     routing_key=ROUTING_KEY
 )
 
-print(f"[✓] Client Python connecté")
-print(f"[✓] Queue '{QUEUE_NAME}' bindée sur exchange '{EXCHANGE_NAME}' avec '{ROUTING_KEY}'")
-print("[✓] En attente de données des capteurs...\n")
+print(f"[✓] IA connecté")
+print(f"[✓] Queue '{QUEUE_NAME}' bindée sur exchange '{EXCHANGE_NAME}'")
+print("[✓] En attente de données pour IA...\n")
 
+# ---------- NOUVEL EXCHANGE POUR IA ----------
+channel.exchange_declare(
+    exchange=IA_EXCHANGE,
+    exchange_type='direct',
+    durable=True
+)
 
-# ---------- FONCTION D'ANALYSE BY DEEPLEARNING ----------
+# ---------- QUEUE DE SORTIE ET BIND ----------
+channel.queue_declare(queue=IA_QUEUE, durable=True)
+channel.queue_bind(queue=IA_QUEUE, exchange=IA_EXCHANGE, routing_key=IA_ROUTING_KEY)
+
+print(f"[✓] Exchange IA '{IA_EXCHANGE}' et queue '{IA_QUEUE}' déclarés et bindés\n")
+
+# ---------- FONCTION D'ANALYSE ----------
 def is_anomaly(data):
-    """
-    Détection d'anomalie avancée en utilisant l'ia :
-    - valeur > 1000 ou < 0 = anomalie
-    Tu pourras remplacer par du ML plus tard.
-    """
     if "value" not in data:
         return False
-
     return data["value"] < 0 or data["value"] > 1000
-
 
 # ---------- CALLBACK ----------
 def callback(ch, method, properties, body):
@@ -60,16 +64,34 @@ def callback(ch, method, properties, body):
         message = json.loads(body)
         print(f"[Message reçu] {message}")
 
-        if is_anomaly(message):
-            print("⚠️  ANOMALIE PRÉDICTION : probleme !")
+        anomaly = is_anomaly(message)
+
+        if anomaly:
+            print("⚠️  ANOMALIE PREDICTION IA !")
         else:
-            print("OK ✔ Pas d'anomalie d'après les predictions ")
+            print("✔ IA : pas d'anomalie détectée")
+
+        # --- Envoi résultat IA au système manager ---
+        result = {
+            "sensor_id": message.get("sensor_id"),
+            "value": message.get("value"),
+            "anomaly": anomaly,
+            "timestamp": message.get("timestamp"),
+            "source": "IA"
+        }
+
+        channel.basic_publish(
+            exchange=IA_EXCHANGE,
+            routing_key=IA_ROUTING_KEY,
+            body=json.dumps(result)
+        )
+
+        print(f"[→] Résultat IA envoyé : {result}")
 
     except json.JSONDecodeError:
         print("Message JSON invalide")
 
     print("-" * 40)
-
 
 # ---------- CONSOMMATION ----------
 channel.basic_consume(

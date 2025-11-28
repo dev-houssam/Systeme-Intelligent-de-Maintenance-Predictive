@@ -299,3 +299,10 @@ Pour cela, voir ce que fait "RAW Data" : 800000ns périodiques
 
 
 
+# node.js installation
+```sh
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+
+```

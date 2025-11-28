@@ -3,11 +3,15 @@ import json
 
 # ---------- CONFIG ----------
 RABBIT_HOST = "localhost"
+
+# Exchange/Queue d'entrée
 EXCHANGE_NAME = "raw_data_exchange"
 QUEUE_NAME = "anomaly_detection_queue"
-ROUTING_KEY = "capteurs.*"       # topic filter
+ROUTING_KEY = "capteurs_data"
 
-#ROUTING_KEY = "capteurs_data"       # topic filter
+# Nouveau Exchange/Queue de sortie (vers System Manager)
+ADT_EXCHANGE = "adt_exchange"
+ADT_ROUTING_KEY = "adt.result"   # routing key pour publier résultats
 
 
 # ---------- CONNEXION ----------
@@ -16,14 +20,14 @@ connection = pika.BlockingConnection(
 )
 channel = connection.channel()
 
-# ---------- EXCHANGE (topic) ----------
+# ---------- EXCHANGE d'entrée (topic) ----------
 channel.exchange_declare(
     exchange=EXCHANGE_NAME,
     exchange_type='topic',
     durable=True
 )
 
-# ---------- QUEUE ----------
+# ---------- QUEUE d'entrée ----------
 channel.queue_declare(
     queue=QUEUE_NAME,
     durable=True
@@ -36,21 +40,28 @@ channel.queue_bind(
     routing_key=ROUTING_KEY
 )
 
-print(f"[✓] Client Python connecté")
+print(f"[✓] Client Python connecté (ADT)")
 print(f"[✓] Queue '{QUEUE_NAME}' bindée sur exchange '{EXCHANGE_NAME}' avec '{ROUTING_KEY}'")
 print("[✓] En attente de données des capteurs...\n")
+
+
+# ---------- NOUVEL EXCHANGE POUR LES RÉSULTATS ----------
+channel.exchange_declare(
+    exchange=ADT_EXCHANGE,
+    exchange_type='direct',
+    durable=True
+)
+
+print(f"[✓] Exchange ADT pour résultats déclaré : '{ADT_EXCHANGE}'")
 
 
 # ---------- FONCTION D'ANALYSE ----------
 def is_anomaly(data):
     """
-    Détection d'anomalie très simple :
-    - valeur > 1000 ou < 0 = anomalie
-    Tu pourras remplacer par du ML plus tard.
+    Détection simple : valeur hors de [0,1000]
     """
     if "value" not in data:
         return False
-
     return data["value"] < 0 or data["value"] > 1000
 
 
@@ -60,10 +71,28 @@ def callback(ch, method, properties, body):
         message = json.loads(body)
         print(f"[Message reçu] {message}")
 
-        if is_anomaly(message):
+        anomaly = is_anomaly(message)
+
+        if anomaly:
             print("⚠️  ANOMALIE DÉTECTÉE !")
         else:
             print("OK ✔ Pas d'anomalie")
+
+        # === Envoi du résultat d'analyse dans le nouvel exchange ===
+        result = {
+            "sensor_id": message.get("sensor_id"),
+            "value": message.get("value"),
+            "anomaly": anomaly,
+            "timestamp": message.get("timestamp")
+        }
+
+        channel.basic_publish(
+            exchange=ADT_EXCHANGE,
+            routing_key=ADT_ROUTING_KEY,
+            body=json.dumps(result)
+        )
+
+        print(f"[→] Résultat envoyé au système manager : {result}")
 
     except json.JSONDecodeError:
         print("Message JSON invalide")
