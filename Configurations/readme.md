@@ -195,11 +195,19 @@ $db> db.customers.count()
 ```
 - venvCyc : Consacré au stockage dans la base de données MongoDB
 	- lib : pika, pymongo
+    - commandes : 
+        - python3 -m venv venvCyc
+        - source venvCyc/bin/activate
 - venvCycADT : : Consacré au dévelopmment des outils de detections des anomalies basiques
 	- lib : pika, (moteurs d'inference de règles....)
+    - commandes : 
+        - python3 -m venv venvCycADT
+        - source venvCycADT/bin/activate
 - venvCycAI : Consacré au développement d'outils utilisant le deep learning
     - lib : pika, (réseau de neuronnes pour apprentissage)
-
+    - commandes : 
+        - python3 -m venv venvCycAI
+        - source venvCycAI/bin/activate
 ```
 
 # Configuration des Bindings
