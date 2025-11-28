@@ -210,6 +210,24 @@ $db> db.customers.count()
         - source venvCycAI/bin/activate
 ```
 
+# Environnment Inutile
+
+```sh
+python3 -m venv Execution
+source Execution/bin/activate
+
+python3 -m venv Compilation
+Compilation/bin/activate
+
+python3 -m venv Edition
+source Edition/bin/activate
+
+python3 -m venv Git
+source Git/bin/activate
+
+```
+
+
 # Configuration des Bindings
 
 Configurations de l'exchange  : 
