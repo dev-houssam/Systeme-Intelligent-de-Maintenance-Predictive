@@ -306,3 +306,23 @@ sudo apt install -y nodejs
 
 
 ```
+
+
+# System Manager
+
+```
+ npm install amqplib
+sudo apt install -y nodejs
+node -v
+npm -v
+
+npm init
+
+npm install amqplib
+
+node system_manager.js
+
+npm install amqplib ws
+
+
+```

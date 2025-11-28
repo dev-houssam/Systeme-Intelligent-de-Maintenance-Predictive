@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/dev-houssam/Systeme-Intelligent-de-Maintenance-Predictive#readme",
   "dependencies": {
-    "amqplib": "^0.10.9"
+    "amqplib": "^0.10.9",
+    "ws": "^8.18.3"
   }
 }
