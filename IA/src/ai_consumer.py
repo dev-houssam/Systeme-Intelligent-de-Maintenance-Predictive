@@ -73,10 +73,10 @@ def callback(ch, method, properties, body):
 
         # --- Envoi résultat IA au système manager ---
         result = {
-            "sensor_id": message.get("sensor_id"),
-            "value": message.get("value"),
+            "sensor_id": message.get("id"),
+            "value": message.get("valeurActuelle"),
             "anomaly": anomaly,
-            "timestamp": message.get("timestamp"),
+            "timestamp": message.get("timestampDerniereMesure"),
             "source": "IA"
         }
 

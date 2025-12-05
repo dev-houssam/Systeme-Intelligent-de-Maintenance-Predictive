@@ -80,10 +80,10 @@ def callback(ch, method, properties, body):
 
         # === Envoi du résultat d'analyse dans le nouvel exchange ===
         result = {
-            "sensor_id": message.get("sensor_id"),
-            "value": message.get("value"),
+            "sensor_id": message.get("id"),
+            "value": message.get("valeurActuelle"),
             "anomaly": anomaly,
-            "timestamp": message.get("timestamp")
+            "timestamp": message.get("timestampDerniereMesure")
         }
 
         channel.basic_publish(
