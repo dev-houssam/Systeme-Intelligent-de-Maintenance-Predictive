@@ -326,3 +326,14 @@ npm install amqplib ws
 
 
 ```
+
+
+
+# React commandes 
+
+```
+npx create-react-app dashboard
+cd dashboard
+npm start
+
+```

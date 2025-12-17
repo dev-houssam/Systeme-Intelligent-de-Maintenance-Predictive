@@ -25,6 +25,8 @@
   "homepage": "https://github.com/dev-houssam/Systeme-Intelligent-de-Maintenance-Predictive#readme",
   "dependencies": {
     "amqplib": "^0.10.9",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
     "ws": "^8.18.3"
   }
 }
