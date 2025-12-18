@@ -329,11 +329,25 @@ npm install amqplib ws
 
 
 
-# React commandes 
+# Installation de l'interface graphique :  React commandes 
 
 ```
 npx create-react-app dashboard
 cd dashboard
+npm install recharts
 npm start
+
+```
+
+# System Manager : CORS
+
+CORS permet d'autorisé des requetes multiOrigin au sein d'un serveur. voilà c'est tout.
+
+```bash
+# Pour que notre serveur puisse communiquer avec divers serveur/client, on installe CORS
+npm install cors
+
+#une fois installé, il faut l'utiliser
+app.use(cors)
 
 ```

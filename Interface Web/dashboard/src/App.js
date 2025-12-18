@@ -38,11 +38,17 @@ function App() {
     <div className="App" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1 style={{ textAlign: "center", color: "#333" }}>Dashboard System Manager</h1>
 
-      <AfficherSensorsStatus />
+      <div style={{ display: "flex", width: "60%", color: "#333" }}>
+
+        <AfficherSensorsStatus />
 
       {/* Notifications très sévères */}
       <NotificationsSevere processedData={processedData} seuil={100} />
 
+
+     </div>
+
+      
       {/* Dashboard WebSocket */}
       <WebSocketDashboard rawData={rawData} processedData={processedData} />
     </div>

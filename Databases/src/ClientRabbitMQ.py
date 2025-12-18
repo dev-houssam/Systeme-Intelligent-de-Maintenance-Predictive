@@ -22,10 +22,15 @@ class ClientRabbitMQ:
         # Consommation des messages
         def callback(ch, method, properties, body):
             try:
-                data = json.loads(body)
-                print(data)
                 # Envoi vers MongoDB
-                self.mongo_client.insert_capteur(data)
+                try:
+                    data = json.loads(body)
+                    print(data)
+                    self.mongo_client.insert_capteur(data)
+                except Exception as e:
+                    print("client mongo disfonctionne NACK2RMQ", e)
+                    ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+
                 # Ack le message
                 ch.basic_ack(delivery_tag=method.delivery_tag)
             except Exception as e:

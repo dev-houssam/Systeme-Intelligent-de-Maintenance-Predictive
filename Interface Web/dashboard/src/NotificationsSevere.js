@@ -18,9 +18,12 @@ export default function NotificationsSevere({ processedData, seuil }) {
       fontSize: "16px",
       textAlign: "center"
     }}>
-      Notifications très sévères : {severeCount}
+      Notifications très sévères 🔔 : {severeCount}
     </div>
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cc7246b02e7ffeffc8850cfa29bb41d96d466aae
