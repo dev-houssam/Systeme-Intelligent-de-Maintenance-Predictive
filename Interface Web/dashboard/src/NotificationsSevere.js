@@ -23,7 +23,3 @@ export default function NotificationsSevere({ processedData, seuil }) {
   );
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> cc7246b02e7ffeffc8850cfa29bb41d96d466aae
