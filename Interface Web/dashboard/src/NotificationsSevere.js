@@ -24,4 +24,3 @@ export default function NotificationsSevere({ processedData, seuil }) {
 }
 
 
-../Interface\ Web/dashboard/src ../Interface\ Web/dashboard/package.json  ../Interface\ Web/dashboard//package-lock.json
