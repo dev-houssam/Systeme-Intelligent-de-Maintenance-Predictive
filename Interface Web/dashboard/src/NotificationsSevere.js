@@ -18,10 +18,8 @@ export default function NotificationsSevere({ processedData, seuil }) {
       fontSize: "16px",
       textAlign: "center"
     }}>
-      Notifications très sévères : {severeCount}
+      Notifications très sévères 🔔 : {severeCount}
     </div>
   );
 }
 
-
-../Interface\ Web/dashboard/src ../Interface\ Web/dashboard/package.json  ../Interface\ Web/dashboard//package-lock.json
