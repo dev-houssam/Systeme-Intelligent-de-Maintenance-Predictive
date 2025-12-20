@@ -1,0 +1,110 @@
+import pika
+import json
+
+# ---------- CONFIG ----------
+RABBIT_HOST = "localhost"
+
+# Exchange/Queue d'entrée
+EXCHANGE_NAME = "raw_data_exchange"
+QUEUE_NAME = "anomaly_detection_queue"
+ROUTING_KEY = "capteurs_data"
+
+# Nouveau Exchange/Queue de sortie (vers System Manager)
+ADT_EXCHANGE = "adt_exchange"
+ADT_ROUTING_KEY = "adt.result"   # routing key pour publier résultats
+
+
+# ---------- CONNEXION ----------
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host=RABBIT_HOST)
+)
+channel = connection.channel()
+
+# ---------- EXCHANGE d'entrée (topic) ----------
+channel.exchange_declare(
+    exchange=EXCHANGE_NAME,
+    exchange_type='topic',
+    durable=True
+)
+
+# ---------- QUEUE d'entrée ----------
+channel.queue_declare(
+    queue=QUEUE_NAME,
+    durable=True
+)
+
+# ---------- BINDING ----------
+channel.queue_bind(
+    exchange=EXCHANGE_NAME,
+    queue=QUEUE_NAME,
+    routing_key=ROUTING_KEY
+)
+
+print(f"[✓] Client Python connecté (ADT)")
+print(f"[✓] Queue '{QUEUE_NAME}' bindée sur exchange '{EXCHANGE_NAME}' avec '{ROUTING_KEY}'")
+print("[✓] En attente de données des capteurs...\n")
+
+
+# ---------- NOUVEL EXCHANGE POUR LES RÉSULTATS ----------
+channel.exchange_declare(
+    exchange=ADT_EXCHANGE,
+    exchange_type='direct',
+    durable=True
+)
+
+print(f"[✓] Exchange ADT pour résultats déclaré : '{ADT_EXCHANGE}'")
+
+
+# ---------- FONCTION D'ANALYSE ----------
+def is_anomaly(data):
+    """
+    Détection simple : valeur hors de [0,1000]
+    """
+    if "value" not in data:
+        return False
+    return data["value"] < 0 or data["value"] > 1000
+
+
+# ---------- CALLBACK ----------
+def callback(ch, method, properties, body):
+    try:
+        message = json.loads(body)
+        print(f"[Message reçu] {message}")
+
+        anomaly = is_anomaly(message)
+
+        if anomaly:
+            print("⚠️  ANOMALIE DÉTECTÉE !")
+        else:
+            print("OK ✔ Pas d'anomalie")
+
+        # === Envoi du résultat d'analyse dans le nouvel exchange ===
+        result = {
+            "sensor_id": message.get("id"),
+            "value": message.get("valeurActuelle"),
+            "anomaly": anomaly,
+            "timestamp": message.get("timestampDerniereMesure")
+        }
+
+        channel.basic_publish(
+            exchange=ADT_EXCHANGE,
+            routing_key=ADT_ROUTING_KEY,
+            body=json.dumps(result)
+        )
+
+        print(f"[→] Résultat envoyé au système manager : {result}")
+
+    except json.JSONDecodeError:
+        print("Message JSON invalide")
+
+    print("-" * 40)
+
+
+# ---------- CONSOMMATION ----------
+channel.basic_consume(
+    queue=QUEUE_NAME,
+    on_message_callback=callback,
+    auto_ack=True
+)
+
+channel.start_consuming()

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "TEMP_HIGH",
+    "conditions": [
+      { "field": "value", "op": ">", "value": 90 }
+    ],
+    "severity": "MEDIUM",
+    "actions": ["ALERT"]
+  },
+  {
+    "id": "TEMP_RAPID",
+    "conditions": [
+      { "field": "value", "op": ">", "value": 30 },
+      { "field": "delta", "op": ">", "value": 5 }
+    ],
+    "combine": "AND",
+    "severity": "HIGH",
+    "actions": ["ALERT", "LOG"]
+  }
+]
