@@ -6,6 +6,7 @@ from engine.lifecycle import init_engine
 import subprocess
 
 subprocess.run(["clear", "-x"]) 
+print("BIENVENUE, COMMENT VAS-TU ?")
 
 # ---------- CONFIG ----------
 RABBIT_HOST = "localhost"
