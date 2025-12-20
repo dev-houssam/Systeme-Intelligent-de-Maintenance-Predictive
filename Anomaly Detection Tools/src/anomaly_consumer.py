@@ -3,6 +3,9 @@ import json
 from core.adapter import from_rabbit
 from core.context import SensorContext
 from engine.lifecycle import init_engine
+import subprocess
+
+subprocess.run(["clear", "-x"]) 
 
 # ---------- CONFIG ----------
 RABBIT_HOST = "localhost"
@@ -36,30 +39,65 @@ print("[✓] En attente de données des capteurs...\n")
 context = SensorContext()
 engine = init_engine("storage/rules.json")
 
+
+
 # ---------- WORKER ----------
 class Worker:
+    INSTANCE = 0
     def __init__(self, message, channel, delivery_tag):
         self.message = message
         self.channel = channel
         self.delivery_tag = delivery_tag
+        Worker.INSTANCE = Worker.INSTANCE + 1
 
     def run(self):
-        #print("icicicicicicic")
+        print("\33[41m")
+        print(50*"#")
+        print(50*"#")
+        print(50*"#")
+        print(50*"#")
+        print(50*"#")
+        print(50*"#")
+        print(50*"#")
+        print("\33[00m")
         try:
             # Convert RabbitMQ message -> SensorEvent
             event = from_rabbit(self.message)
+            print("FORMAT DE EVENT:", event)
             #print("lalalalalalalalalalalal")
             event = context.enrich(event)
+            print("FORMAT DE EVENT RESTANT LE MÊME:", event)
             #print("icicicicicicichahahah")
             # Evaluation via moteur d'inférence
             result = engine.evaluate(event)
 
             #print("+++++:::", event)
 
+            try:
+                if event.value >= 40:
+                    print("\33[41m")
+                    print("⚠️ Attention [STATIC: regle -> dynamique] ! Il y a des attributs disponible selon le resultat de l'inference")
+                    print(f"ID::{event.sensor_id} | VALUE::{event.value}")
+                    print("\33[40m")
+                    print("Corriger :  RULE_ID | Transmettre le bon timestamp")
+                    print("\33[00m")
+                    print("RESULTAT::", result)
+                else:
+                    print(f"ID::{event.sensor_id} | VALUE::{event.value}")
+
+            except Exception as e:
+                print("PROBLEME :::>>>>>", e)
+                print("alors qu'on a event=", event)
+
+
+            print("GROS PROBLEME : NOUS DEVONS FABRIQUER UN NOUVEAU FORMAT: ")
+            print("FORMAT: [DATA INPUT][REGLES UTILISÉS][RESULTAT]")
+
+
             # Préparer le résultat pour RabbitMQ
             output = {
-                "sensor_id": event.id,                       # <-- utilise event.id
-                "valeurActuelle": event.valeurActuelle,              # <-- utilise valeurActuelle
+                "sensor_id": event.sensor_id,                       # <-- utilise event.id
+                "valeurActue": event.value,              # <-- utilise valeurActuelle
                 "anomaly": result.anomaly,
                 "rule_id": getattr(result, "rule_id", None),
                 "severity": getattr(result, "severity", None),
@@ -97,7 +135,10 @@ class Worker:
             self.channel.basic_ack(delivery_tag=self.delivery_tag)
 
         except Exception as e:
-            print(f"[!] Erreur traitement Worker: {e}")
+            print(40*"-")
+            print(f"[!] Erreur traitement Worker (instance-worker={Worker.INSTANCE}): EXCEPTION FROM => {e}")
+            self.channel.basic_ack(delivery_tag=self.delivery_tag)
+
             # Ne pas ack pour permettre re-delivery
         finally:
             print("-" * 40)

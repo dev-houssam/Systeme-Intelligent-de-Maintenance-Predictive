@@ -225,6 +225,10 @@ source Edition/bin/activate
 python3 -m venv Git
 source Git/bin/activate
 
+
+python3 -m venv venvCycNS
+source venvCycNS/bin/activate
+
 ```
 
 
@@ -351,3 +355,54 @@ npm install cors
 app.use(cors)
 
 ```
+
+# Creation d'architecture pour Anomaly Detection Tool
+```
+mkdir engine
+touch engine/__init__.py
+touch engine/inference_engine.py
+touch engine/lifecycle.py
+
+mkdir core
+touch core/__init__.py
+touch core/models.py
+touch core/adapter.py
+touch core/context.py
+touch core/normalizer.py
+
+mkdir rules
+touch rules/__init__.py
+touch rules/loader.py
+touch rules/evaluator.py
+touch rules/constraints.py
+touch rules/combiner.py
+touch rules/registry.py
+
+
+mkdir actions
+touch actions/__init__.py
+touch actions/base.py
+touch actions/alert.py
+touch actions/log.py
+touch actions/publish.py
+
+
+mkdir storage
+touch storage/rules.json
+touch storage/README.md
+
+mkdir config
+touch config/settings.py
+touch config/rabbitmq.py
+
+
+mkdir tests
+touch tests/test_constraints.py
+touch tests/test_rules.py
+touch tests/test_engine.py
+
+
+
+```
+
+
