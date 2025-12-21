@@ -7,7 +7,7 @@ import subprocess
 
 subprocess.run(["clear", "-x"]) 
 print("BIENVENUE, COMMENT VAS-TU ?")
-
+subprocess.run(["sleep", "2"]) 
 # ---------- CONFIG ----------
 RABBIT_HOST = "localhost"
 
