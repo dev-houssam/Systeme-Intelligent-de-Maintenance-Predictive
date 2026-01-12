@@ -1,6 +1,6 @@
 [
   {
-    "id": "TEMP_HIGH",
+    "id": "TEMPERATURE_HIGH_RULE_RID_R0X99FF14395A12DD001",
     "conditions": [
       { "field": "value", "op": ">", "value": 90 }
     ],
@@ -8,7 +8,7 @@
     "actions": ["ALERT"]
   },
   {
-    "id": "TEMP_RAPID",
+    "id": "TEMPERATURE_RAPID_RULE_RID_R0X21354B5C3288004001",
     "conditions": [
       { "field": "value", "op": ">", "value": 30 },
       { "field": "delta", "op": ">", "value": 5 }
