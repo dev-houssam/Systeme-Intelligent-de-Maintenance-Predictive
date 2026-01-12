@@ -35,6 +35,11 @@ https://cppcooking.blogspot.com/2022/12/rabbitmq-c-client-1.html
 
 http://localhost:15672/#/queues/%2F/anomaly_detection_queue
 
+https://chatgpt.com/share/69447185-82f4-800f-a480-79a14557f868
+
+https://chatgpt.com/share/69447185-82f4-800f-a480-79a14557f868
+
+
 
 # RabbitMQ
 
